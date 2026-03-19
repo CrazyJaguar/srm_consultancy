@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SRM Global Consultancy | Sushant Raj Mishra</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root {
+  --gold: #B8860B;
+  --gold-light: #D4AF37;
+  --gold-pale: #F5E6B2;
+  --cream: #FDFAF4;
+  --warm-white: #FFF8EE;
+  --ink: #1A1208;
+  --ink-soft: #3D3020;
+  --ink-muted: #7A6850;
+  --border: #E8D9B5;
+  --accent: #C0392B;
+  --accent2: #1B6CA8;
+  --bg: #FDFAF4;
+  --card-bg: #FFFFFF;
+  --nav-bg: rgba(253,250,244,0.96);
+  --shadow: 0 4px 32px rgba(184,134,11,0.10);
+  --shadow-lg: 0 12px 60px rgba(26,18,8,0.13);
+  --radius: 18px;
+  --transition: 0.35s cubic-bezier(.4,0,.2,1);
+}
+[data-theme="dark"] {
+  --gold: #D4AF37;
+  --gold-light: #FFD700;
+  --gold-pale: #3D2E00;
+  --cream: #181208;
+  --warm-white: #1E1608;
+  --ink: #F5E6B2;
+  --ink-soft: #E8D9B5;
+  --ink-muted: #BBA87A;
+  --border: #3D2E00;
+  --bg: #13100A;
+  --card-bg: #1E1608;
+  --nav-bg: rgba(19,16,10,0.97);
+  --shadow: 0 4px 32px rgba(212,175,55,0.08);
+  --shadow-lg: 0 12px 60px rgba(0,0,0,0.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  transition:background var(--transition),color var(--transition);
+  overflow-x:hidden;
+}
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+/* ======= NAVBAR ======= */
+.navbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:var(--nav-bg);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  transition:all var(--transition);
+}
+.nav-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:72px;
+}
+.logo{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;cursor:pointer;
+}
+.logo-badge{
+  width:44px;height:44px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-weight:900;font-size:1.3rem;color:#fff;
+  box-shadow:0 4px 16px rgba(184,134,11,0.35);
+}
+.logo-text{display:flex;flex-direction:column;line-height:1.1;}
+.logo-main{font-family:'Playfair Display',serif;font-weight:700;font-size:1.18rem;color:var(--ink);}
+.logo-sub{font-size:0.68rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:500;}
+.nav-links{display:flex;align-items:center;gap:0.2rem;}
+.nav-link{
+  padding:8px 14px;border-radius:8px;
+  font-size:0.88rem;font-weight:500;color:var(--ink-soft);
+  cursor:pointer;transition:all 0.2s;border:none;background:none;
+  text-decoration:none;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold);background:var(--gold-pale);}
+.nav-actions{display:flex;align-items:center;gap:10px;}
+.theme-btn{
+  width:42px;height:42px;border-radius:50%;
+  border:1.5px solid var(--border);
+  background:var(--card-bg);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;color:var(--gold);font-size:1rem;
+  transition:all 0.2s;
+}
+.theme-btn:hover{background:var(--gold-pale);border-color:var(--gold);}
+.cta-btn{
+  padding:9px 22px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#fff;font-weight:600;font-size:0.88rem;
+  border:none;cursor:pointer;
+  box-shadow:0 4px 16px rgba(184,134,11,0.3);
+  transition:all 0.2s;
+}
+.cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(184,134,11,0.45);}
+.hamburger{
+  display:none;background:none;border:none;cursor:pointer;
+  color:var(--ink);font-size:1.4rem;padding:4px;
+}
+/* MOBILE NAV */
+.mobile-nav{
+  display:none;
+  position:fixed;top:72px;left:0;right:0;
+  background:var(--nav-bg);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  padding:1rem 1.5rem 1.5rem;
+  flex-direction:column;gap:4px;
+  z-index:999;
+  transform:translateY(-110%);
+  transition:transform var(--transition);
+}
+.mobile-nav.open{transform:translateY(0);}
+.mobile-nav .nav-link{width:100%;display:block;padding:12px 16px;}
+
+/* ======= PAGES ======= */
+.page{display:none;min-height:100vh;padding-top:72px;}
+.page.active{display:block;}
+
+/* ======= HERO ======= */
+.hero{
+  position:relative;
+  min-height:calc(100vh - 72px);
+  display:flex;align-items:center;
+  overflow:hidden;
+  background:var(--warm-white);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(212,175,55,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(184,134,11,0.08) 0%, transparent 50%);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size:80px 80px;
+  opacity:0.3;
+}
+.hero-inner{
+  max-width:1280px;margin:0 auto;
+  padding:4rem 2rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+  position:relative;z-index:1;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold-pale);border:1px solid var(--gold-light);
+  padding:6px 16px;border-radius:50px;
+  font-size:0.78rem;font-weight:600;color:var(--gold);
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem;
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5vw,4rem);
+  font-weight:900;line-height:1.12;
+  color:var(--ink);margin-bottom:1.5rem;
+}
+.hero-title em{
+  font-style:italic;color:var(--gold);
+}
+.hero-desc{
+  font-size:1.05rem;color:var(--ink-muted);
+  line-height:1.75;margin-bottom:2.5rem;
+  max-width:480px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{
+  padding:14px 32px;border-radius:12px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#fff;font-weight:600;font-size:1rem;
+  border:none;cursor:pointer;
+  box-shadow:0 6px 24px rgba(184,134,11,0.35);
+  transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(184,134,11,0.5);}
+.btn-outline{
+  padding:14px 32px;border-radius:12px;
+  background:transparent;
+  color:var(--ink);font-weight:600;font-size:1rem;
+  border:1.5px solid var(--border);
+  cursor:pointer;transition:all 0.25s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-pale);}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-top:3rem;padding-top:2.5rem;
+  border-top:1px solid var(--border);
+}
+.hero-stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;font-weight:700;color:var(--gold);
+}
+.hero-stat-label{font-size:0.82rem;color:var(--ink-muted);margin-top:2px;font-weight:500;}
+.hero-visual{position:relative;}
+.hero-card-stack{position:relative;height:480px;}
+.hero-main-card{
+  position:absolute;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:2rem;
+  box-shadow:var(--shadow-lg);
+  width:340px;
+  top:40px;left:50%;transform:translateX(-50%);
+}
+.hero-card-flag{font-size:2rem;margin-bottom:8px;}
+.hero-card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:4px;}
+.hero-card-sub{font-size:0.82rem;color:var(--ink-muted);}
+.hero-card-universities{margin-top:1rem;display:flex;flex-direction:column;gap:8px;}
+.hero-uni-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px;background:var(--bg);border-radius:10px;
+  font-size:0.82rem;
+}
+.uni-rank{
+  background:var(--gold-pale);color:var(--gold);
+  padding:2px 8px;border-radius:6px;font-size:0.72rem;font-weight:600;
+}
+.hero-float-cards{position:absolute;width:100%;height:100%;}
+.float-card{
+  position:absolute;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px 18px;
+  box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:10px;
+  font-size:0.82rem;font-weight:500;
+  animation:float 6s ease-in-out infinite;
+}
+.float-card:nth-child(1){top:10px;right:10px;animation-delay:0s;}
+.float-card:nth-child(2){bottom:80px;left:0;animation-delay:2s;}
+.float-card:nth-child(3){top:200px;right:-10px;animation-delay:4s;}
+.float-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:0.85rem;flex-shrink:0;
+}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+/* ======= SECTIONS ======= */
+.section{padding:5rem 0;}
+.section-inner{max-width:1280px;margin:0 auto;padding:0 2rem;}
+.section-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.75rem;font-weight:700;color:var(--gold);
+  letter-spacing:2.5px;text-transform:uppercase;margin-bottom:1rem;
+}
+.section-label::before{content:'';width:24px;height:2px;background:var(--gold);}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-weight:700;color:var(--ink);margin-bottom:1rem;
+  line-height:1.2;
+}
+.section-desc{font-size:1rem;color:var(--ink-muted);line-height:1.7;max-width:560px;}
+.section-header{text-align:center;margin-bottom:3.5rem;}
+.section-header .section-label{display:flex;justify-content:center;}
+.section-header .section-desc{margin:0 auto;}
+
+/* ======= COUNTRIES ======= */
+.countries-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1.5rem;
+}
+.country-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.8rem 1.5rem;
+  cursor:pointer;
+  transition:all 0.3s;
+  position:relative;overflow:hidden;
+}
+.country-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(212,175,55,0.06),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.country-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--gold-light);
+}
+.country-card:hover::before{opacity:1;}
+.country-flag{font-size:2.5rem;margin-bottom:1rem;display:block;}
+.country-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:6px;}
+.country-unis{font-size:0.82rem;color:var(--ink-muted);margin-bottom:12px;}
+.country-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{
+  padding:3px 10px;border-radius:20px;
+  background:var(--gold-pale);color:var(--gold);
+  font-size:0.72rem;font-weight:600;
+}
+
+/* ======= UNIVERSITIES ======= */
+.unis-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;
+}
+.uni-card{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.8rem;
+  transition:all 0.3s;
+}
+.uni-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--gold-light);}
+.uni-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem;}
+.uni-logo-placeholder{
+  width:52px;height:52px;border-radius:12px;
+  background:linear-gradient(135deg,var(--gold-pale),var(--border));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:1.1rem;color:var(--gold);
+}
+.uni-flag{font-size:1.8rem;}
+.uni-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:4px;}
+.uni-location{font-size:0.82rem;color:var(--ink-muted);margin-bottom:10px;display:flex;align-items:center;gap:5px;}
+.uni-rank-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--gold-pale);padding:4px 12px;border-radius:20px;
+  font-size:0.78rem;font-weight:600;color:var(--gold);margin-bottom:12px;
+}
+.uni-features{display:flex;flex-wrap:wrap;gap:6px;}
+.uni-feature{
+  padding:3px 10px;border-radius:20px;
+  background:var(--bg);border:1px solid var(--border);
+  font-size:0.72rem;color:var(--ink-muted);
+}
+
+/* ======= PROGRAMS / SCHOLARSHIPS ======= */
+.programs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;}
+.program-card{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;transition:all 0.3s;
+}
+.program-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.program-header{
+  padding:1.5rem;
+  background:linear-gradient(135deg,var(--gold-pale),rgba(212,175,55,0.05));
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+}
+.program-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.1rem;flex-shrink:0;
+}
+.program-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;}
+.program-country{font-size:0.78rem;color:var(--ink-muted);margin-top:2px;}
+.program-body{padding:1.5rem;}
+.program-detail{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 0;border-bottom:1px solid var(--border);
+  font-size:0.85rem;
+}
+.program-detail:last-child{border:none;}
+.program-detail i{color:var(--gold);width:16px;}
+.program-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);}
+.scholarship-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,#1B6CA8,#2980B9);
+  color:#fff;padding:4px 14px;border-radius:20px;
+  font-size:0.75rem;font-weight:600;
+}
+.paid-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#fff;padding:4px 14px;border-radius:20px;
+  font-size:0.75rem;font-weight:600;
+}
+
+/* ======= TEST PREP ======= */
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2rem;}
+.test-card{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  transition:all 0.3s;
+}
+.test-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.test-header{
+  padding:2rem;position:relative;overflow:hidden;
+}
+.test-header.ielts{background:linear-gradient(135deg,#1B6CA8 0%,#2196F3 100%);}
+.test-header.pte{background:linear-gradient(135deg,#C0392B 0%,#E74C3C 100%);}
+.test-header.sat{background:linear-gradient(135deg,#27AE60 0%,#2ECC71 100%);}
+.test-header.gre{background:linear-gradient(135deg,#8E44AD 0%,#9B59B6 100%);}
+.test-header.gmat{background:linear-gradient(135deg,#D35400 0%,#E67E22 100%);}
+.test-name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#fff;}
+.test-full{font-size:0.85rem;color:rgba(255,255,255,0.8);margin-top:4px;}
+.test-body{padding:1.8rem;}
+.test-features{display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem;}
+.test-feature{
+  display:flex;align-items:center;gap:10px;font-size:0.88rem;
+}
+.test-feature i{color:var(--gold);}
+.test-modules{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem;}
+.test-module{
+  padding:5px 14px;border-radius:20px;
+  background:var(--bg);border:1px solid var(--border);
+  font-size:0.78rem;font-weight:500;color:var(--ink-soft);
+}
+.test-price{
+  display:flex;align-items:baseline;gap:6px;margin-bottom:1.2rem;
+}
+.price-from{font-size:0.78rem;color:var(--ink-muted);}
+.price-amount{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--ink);}
+.price-period{font-size:0.82rem;color:var(--ink-muted);}
+
+/* ======= PROCESS ======= */
+.process-steps{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2rem;
+  position:relative;
+}
+.process-step{
+  text-align:center;padding:2rem 1.5rem;
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);position:relative;
+  transition:all 0.3s;
+}
+.process-step:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--gold-light);}
+.step-num{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#fff;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.2rem;
+  box-shadow:0 6px 20px rgba(184,134,11,0.3);
+}
+.step-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:8px;}
+.step-desc{font-size:0.85rem;color:var(--ink-muted);line-height:1.6;}
+
+/* ======= TESTIMONIALS ======= */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;}
+.testimonial-card{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:2rem;transition:all 0.3s;
+}
+.testimonial-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.testimonial-stars{display:flex;gap:4px;margin-bottom:1rem;}
+.star{color:var(--gold-light);font-size:0.9rem;}
+.testimonial-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;line-height:1.7;color:var(--ink-soft);
+  margin-bottom:1.5rem;font-style:italic;
+}
+.testimonial-author{display:flex;align-items:center;gap:12px;}
+.author-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:1rem;flex-shrink:0;
+}
+.author-name{font-weight:600;font-size:0.9rem;}
+.author-dest{font-size:0.78rem;color:var(--ink-muted);}
+
+/* ======= CONTACT ======= */
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start;}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem;}
+.contact-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:1.5rem;background:var(--card-bg);
+  border:1px solid var(--border);border-radius:var(--radius);
+}
+.contact-icon{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1rem;
+}
+.contact-label{font-size:0.78rem;color:var(--ink-muted);margin-bottom:4px;font-weight:500;text-transform:uppercase;letter-spacing:1px;}
+.contact-value{font-weight:600;font-size:0.95rem;}
+.contact-form{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:2.5rem;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px;color:var(--ink-soft);letter-spacing:0.5px;}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:12px 16px;
+  border:1.5px solid var(--border);border-radius:10px;
+  background:var(--bg);color:var(--ink);
+  font-family:'DM Sans',sans-serif;font-size:0.9rem;
+  transition:border-color 0.2s,box-shadow 0.2s;
+  outline:none;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(184,134,11,0.12);
+}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-group select option{background:var(--card-bg);color:var(--ink);}
+
+/* ======= ABOUT ======= */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.about-visual{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:24px;padding:3rem;
+  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+}
+.about-visual::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,0.15),transparent);
+}
+.owner-badge{
+  display:flex;align-items:center;gap:1.5rem;
+  margin-bottom:2rem;padding-bottom:2rem;
+  border-bottom:1px solid var(--border);
+}
+.owner-avatar{
+  width:80px;height:80px;border-radius:20px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:2rem;color:#fff;flex-shrink:0;
+  box-shadow:0 8px 24px rgba(184,134,11,0.3);
+}
+.owner-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;}
+.owner-title{font-size:0.85rem;color:var(--gold);font-weight:500;margin-top:4px;}
+.about-values{display:flex;flex-direction:column;gap:1rem;}
+.value-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:1rem;background:var(--bg);border-radius:12px;
+}
+.value-icon{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  background:var(--gold-pale);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:0.9rem;
+}
+.value-title{font-weight:600;font-size:0.9rem;margin-bottom:3px;}
+.value-desc{font-size:0.82rem;color:var(--ink-muted);}
+.about-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.about-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 0;border-bottom:1px solid var(--border);
+  font-size:0.92rem;
+}
+.about-list li:last-child{border:none;}
+.about-list li i{color:var(--gold);margin-top:3px;}
+
+/* ======= BANNER ======= */
+.cta-banner{
+  background:linear-gradient(135deg,var(--ink) 0%,#3D2E00 100%);
+  padding:5rem 2rem;text-align:center;position:relative;overflow:hidden;
+}
+.cta-banner::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 60% at 30% 50%,rgba(212,175,55,0.15),transparent),
+    radial-gradient(ellipse 40% 60% at 70% 50%,rgba(184,134,11,0.1),transparent);
+}
+.cta-banner-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+.cta-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:#fff;margin-bottom:1rem;}
+.cta-banner p{font-size:1.05rem;color:rgba(255,255,255,0.75);margin-bottom:2.5rem;line-height:1.7;}
+.cta-banner-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-light{
+  padding:14px 32px;border-radius:12px;
+  background:#fff;color:var(--ink);
+  font-weight:600;font-size:1rem;border:none;cursor:pointer;
+  box-shadow:0 4px 20px rgba(0,0,0,0.15);transition:all 0.25s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.25);}
+.btn-ghost{
+  padding:14px 32px;border-radius:12px;
+  background:transparent;color:#fff;
+  font-weight:600;font-size:1rem;
+  border:1.5px solid rgba(255,255,255,0.35);cursor:pointer;
+  transition:all 0.25s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6);}
+
+/* ======= WHY US ======= */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2rem;}
+.feature-card{
+  padding:2rem;background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);transition:all 0.3s;
+}
+.feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--gold-light);}
+.feature-icon{
+  width:54px;height:54px;border-radius:14px;margin-bottom:1.2rem;
+  background:linear-gradient(135deg,var(--gold-pale),rgba(212,175,55,0.15));
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:1.3rem;
+}
+.feature-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:8px;}
+.feature-desc{font-size:0.88rem;color:var(--ink-muted);line-height:1.65;}
+
+/* ======= PAGE HERO ======= */
+.page-hero{
+  background:linear-gradient(135deg,var(--warm-white) 0%,var(--bg) 100%);
+  padding:4rem 2rem 3rem;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 80% 50%,rgba(212,175,55,0.1),transparent);
+}
+.page-hero-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1;}
+.breadcrumb{
+  display:flex;align-items:center;gap:8px;
+  font-size:0.82rem;color:var(--ink-muted);margin-bottom:1rem;
+}
+.breadcrumb span{cursor:pointer;transition:color 0.2s;}
+.breadcrumb span:hover{color:var(--gold);}
+.breadcrumb i{font-size:0.6rem;}
+
+/* ======= FOOTER ======= */
+.footer{
+  background:var(--ink);color:rgba(255,255,255,0.85);
+  padding:4rem 0 0;
+}
+[data-theme="dark"] .footer{background:#0A0804;}
+.footer-grid{
+  max-width:1280px;margin:0 auto;padding:0 2rem;
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;
+}
+.footer-brand{margin-bottom:1.5rem;}
+.footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:1rem;}
+.footer-logo-badge{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#fff;
+}
+.footer-logo-text{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:#fff;}
+.footer-desc{font-size:0.88rem;line-height:1.7;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;}
+.footer-socials{display:flex;gap:10px;}
+.social-btn{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,0.7);font-size:0.9rem;cursor:pointer;
+  transition:all 0.2s;
+}
+.social-btn:hover{background:var(--gold);border-color:var(--gold);color:#fff;}
+.footer-col h4{
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;
+  color:#fff;margin-bottom:1.2rem;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-links li a{
+  font-size:0.87rem;color:rgba(255,255,255,0.6);
+  text-decoration:none;transition:color 0.2s;cursor:pointer;
+}
+.footer-links li a:hover{color:var(--gold-light);}
+.footer-bottom{
+  max-width:1280px;margin:3rem auto 0;padding:1.5rem 2rem;
+  border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-copy{font-size:0.82rem;color:rgba(255,255,255,0.45);}
+.footer-made{
+  font-size:0.82rem;color:var(--gold-light);
+  font-weight:500;
+}
+
+/* ======= TABS ======= */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2.5rem;}
+.tab-btn{
+  padding:9px 22px;border-radius:50px;
+  font-size:0.87rem;font-weight:600;
+  border:1.5px solid var(--border);
+  background:var(--card-bg);color:var(--ink-soft);
+  cursor:pointer;transition:all 0.2s;
+}
+.tab-btn.active,.tab-btn:hover{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#fff;border-color:transparent;
+  box-shadow:0 4px 16px rgba(184,134,11,0.3);
+}
+
+/* ======= ALERT BANNER ======= */
+.alert-banner{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  padding:10px 2rem;text-align:center;
+  font-size:0.85rem;font-weight:500;color:#fff;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.alert-banner i{font-size:0.9rem;}
+
+/* ======= ANIMATIONS ======= */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.fade-up{animation:fadeUp 0.6s ease both;}
+.fade-up-1{animation-delay:0.1s;}
+.fade-up-2{animation-delay:0.2s;}
+.fade-up-3{animation-delay:0.3s;}
+.fade-up-4{animation-delay:0.4s;}
+
+/* ======= SCROLL TOP ======= */
+.scroll-top{
+  position:fixed;bottom:2rem;right:2rem;z-index:999;
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(184,134,11,0.4);
+  transition:all 0.2s;font-size:1rem;
+  opacity:0;pointer-events:none;
+}
+.scroll-top.visible{opacity:1;pointer-events:all;}
+.scroll-top:hover{transform:translateY(-3px);}
+
+/* ======= RESPONSIVE ======= */
+@media(max-width:1024px){
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:block;}
+  .mobile-nav{display:flex;}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;}
+  .hero-visual{display:none;}
+  .hero-stats{grid-template-columns:repeat(3,1fr);gap:1rem;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .hero{min-height:auto;padding:2rem 0;}
+}
+@media(max-width:480px){
+  .footer-grid{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .hero-badge{font-size:0.7rem;}
+}
+/* ======= DEVELOPER CTA ======= */
+.dev-cta-wrapper {
+  padding: 6rem 2rem;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.dev-cta-wrapper::before {
+  content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+  width: 100vw; height: 100vw; max-width: 800px; max-height: 800px;
+  background: radial-gradient(circle, rgba(212,175,55,0.05), transparent 70%);
+  border-radius: 50%; pointer-events: none;
+}
+.dev-cta-box {
+  max-width: 1080px; margin: 0 auto;
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 20px; padding: 4rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 3rem;
+  box-shadow: var(--shadow-lg); position: relative; z-index: 10;
+}
+.dev-cta-content { flex: 1; }
+.dev-cta-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; font-weight: 700; color: var(--gold);
+  letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 1rem;
+}
+.dev-cta-label::before { content: ''; width: 24px; height: 2px; background: var(--gold); }
+.dev-cta-title {
+  font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700; color: var(--ink); margin-bottom: 1.2rem; line-height: 1.2;
+}
+.dev-cta-desc {
+  font-size: 1rem; color: var(--ink-muted); line-height: 1.7; max-width: 450px; margin-bottom: 2rem;
+}
+.dev-cta-btn {
+  padding: 14px 32px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #fff; font-weight: 600; font-size: 1rem; border: none; cursor: pointer;
+  box-shadow: 0 6px 24px rgba(184,134,11,0.35); transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+}
+.dev-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(184,134,11,0.5); }
+.dev-theme-card {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
+  padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  min-width: 250px; text-align: center;
+}
+.dt-label {
+  font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink);
+}
+.dt-toggle {
+  width: 80px; height: 44px; border-radius: 50px;
+  background: var(--card-bg); border: 2px solid var(--border);
+  position: relative; cursor: pointer; padding: 2px; transition: var(--transition);
+}
+.dt-knob {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1rem; transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(184,134,11,0.3);
+}
+[data-theme="dark"] .dt-knob { transform: translateX(36px); }
+
+@media(max-width:768px){
+  .dev-cta-box { flex-direction: column; padding: 2.5rem 2rem; text-align: center; }
+  .dev-cta-label { justify-content: center; }
+  .dev-cta-label::before { display: none; }
+  .dev-cta-desc { margin: 0 auto 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ALERT BANNER -->
+<div class="alert-banner">
+  <i class="fas fa-star"></i>
+  Intake 2025 Now Open — Australia, Canada, UK, Europe & More! Free Counselling Available.
+  <i class="fas fa-star"></i>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="logo" onclick="showPage('home')">
+      <div class="logo-badge">S</div>
+      <div class="logo-text">
+        <span class="logo-main">SRM Global</span>
+        <span class="logo-sub">Consultancy</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <span class="nav-link active" onclick="showPage('home')">Home</span>
+      <span class="nav-link" onclick="showPage('destinations')">Destinations</span>
+      <span class="nav-link" onclick="showPage('universities')">Universities</span>
+      <span class="nav-link" onclick="showPage('scholarships')">Scholarships</span>
+      <span class="nav-link" onclick="showPage('testprep')">Test Prep</span>
+      <span class="nav-link" onclick="showPage('about')">About</span>
+      <span class="nav-link" onclick="showPage('contact')">Contact</span>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">
+        <i class="fas fa-sun" id="theme-icon"></i>
+      </button>
+      <button class="cta-btn" onclick="showPage('contact')">Free Counselling</button>
+      <button class="hamburger" onclick="toggleMobileNav()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <span class="nav-link" onclick="showPage('home');toggleMobileNav()">Home</span>
+  <span class="nav-link" onclick="showPage('destinations');toggleMobileNav()">Destinations</span>
+  <span class="nav-link" onclick="showPage('universities');toggleMobileNav()">Universities</span>
+  <span class="nav-link" onclick="showPage('scholarships');toggleMobileNav()">Scholarships</span>
+  <span class="nav-link" onclick="showPage('testprep');toggleMobileNav()">Test Prep</span>
+  <span class="nav-link" onclick="showPage('about');toggleMobileNav()">About</span>
+  <span class="nav-link" onclick="showPage('contact');toggleMobileNav()">Contact</span>
+</div>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-inner">
+      <div class="hero-content fade-up">
+        <div class="hero-badge">
+          <i class="fas fa-globe"></i>
+          #1 Education Consultancy in Nepal
+        </div>
+        <h1 class="hero-title">
+          Your <em>Dream University</em><br>in Any Country
+        </h1>
+        <p class="hero-desc">Expert guidance for studying abroad in Australia, Canada, UK, USA, Germany, Italy, Europe & beyond. Scholarship support, visa assistance, and end-to-end counselling by Sushant Raj Mishra.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showPage('contact')">
+            <i class="fas fa-calendar-check"></i> Book Free Consultation
+          </button>
+          <button class="btn-outline" onclick="showPage('destinations')">
+            <i class="fas fa-compass"></i> Explore Destinations
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">5000+</div>
+            <div class="hero-stat-label">Students Placed</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">40+</div>
+            <div class="hero-stat-label">Partner Countries</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">98%</div>
+            <div class="hero-stat-label">Visa Success</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual fade-up fade-up-2">
+        <div class="hero-card-stack">
+          <div class="hero-main-card">
+            <div class="hero-card-flag">🇦🇺</div>
+            <div class="hero-card-title">Australia — Top Universities</div>
+            <div class="hero-card-sub">QS World Ranked Institutions</div>
+            <div class="hero-card-universities">
+              <div class="hero-uni-item">
+                <span>University of Melbourne</span>
+                <span class="uni-rank">#33</span>
+              </div>
+              <div class="hero-uni-item">
+                <span>Monash University</span>
+                <span class="uni-rank">#42</span>
+              </div>
+              <div class="hero-uni-item">
+                <span>ANU</span>
+                <span class="uni-rank">#34</span>
+              </div>
+              <div class="hero-uni-item">
+                <span>UNSW Sydney</span>
+                <span class="uni-rank">#45</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-float-cards">
+            <div class="float-card">
+              <div class="float-icon"><i class="fas fa-award"></i></div>
+              <div>
+                <div style="font-size:0.75rem;color:var(--ink-muted)">Scholarship</div>
+                <div>$50K Awarded</div>
+              </div>
+            </div>
+            <div class="float-card">
+              <div class="float-icon"><i class="fas fa-check"></i></div>
+              <div>
+                <div style="font-size:0.75rem;color:var(--ink-muted)">Visa Approved</div>
+                <div>Canada Study Permit</div>
+              </div>
+            </div>
+            <div class="float-card">
+              <div class="float-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div>
+                <div style="font-size:0.75rem;color:var(--ink-muted)">Accepted</div>
+                <div>TU Munich, Germany</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section" style="background:var(--bg);">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">Everything You Need to Study Abroad</h2>
+        <p class="section-desc">From choosing your destination to landing at the airport — we handle every step of your journey with expertise and care.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-up fade-up-1">
+          <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+          <h3 class="feature-title">Expert Counselling</h3>
+          <p class="feature-desc">One-on-one sessions with certified education counsellor Sushant Raj Mishra with 10+ years of international admissions experience.</p>
+        </div>
+        <div class="feature-card fade-up fade-up-2">
+          <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+          <h3 class="feature-title">SOP & Application Support</h3>
+          <p class="feature-desc">Professional Statement of Purpose writing, CV building, recommendation letter guidance and complete application filing.</p>
+        </div>
+        <div class="feature-card fade-up fade-up-3">
+          <div class="feature-icon"><i class="fas fa-passport"></i></div>
+          <h3 class="feature-title">Visa Assistance</h3>
+          <p class="feature-desc">End-to-end student visa guidance for Australia, Canada, Germany, UK, USA, Schengen and more with a 98% success rate.</p>
+        </div>
+        <div class="feature-card fade-up fade-up-4">
+          <div class="feature-icon"><i class="fas fa-medal"></i></div>
+          <h3 class="feature-title">Scholarship Hunting</h3>
+          <p class="feature-desc">We identify and apply for merit, need-based, government and university scholarships on your behalf — saving you thousands.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-home"></i></div>
+          <h3 class="feature-title">Pre-Departure Support</h3>
+          <p class="feature-desc">Accommodation guidance, health insurance, bank account setup advice and orientation sessions before you fly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+          <h3 class="feature-title">IELTS / PTE / SAT Prep</h3>
+          <p class="feature-desc">In-house certified coaching for IELTS, PTE, SAT, GRE and GMAT with small batches and personalised attention.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-university"></i></div>
+          <h3 class="feature-title">200+ Partner Universities</h3>
+          <p class="feature-desc">Official partnerships with leading universities in 40+ countries including QS Top 100 institutions across 6 continents.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-phone-volume"></i></div>
+          <h3 class="feature-title">Post-Landing Support</h3>
+          <p class="feature-desc">We stay connected even after you land. Part-time job guidance, enrolment help and city orientation in your destination country.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS PREVIEW -->
+  <section class="section" style="background:var(--warm-white);">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Top Destinations</div>
+        <h2 class="section-title">Study in Your Dream Country</h2>
+        <p class="section-desc">We provide end-to-end consultation for studying in the world's most prestigious education destinations.</p>
+      </div>
+      <div class="countries-grid">
+        <div class="country-card" onclick="showPage('destinations')">
+          <span class="country-flag">🇦🇺</span>
+          <div class="country-name">Australia</div>
+          <div class="country-unis">43 Partner Universities</div>
+          <div class="country-tags"><span class="tag">PR Pathway</span><span class="tag">Scholarship</span></div>
+        </div>
+        <div class="country-card" onclick="showPage('destinations')">
+          <span class="country-flag">🇨🇦</span>
+          <div class="country-name">Canada</div>
+          <div class="country-unis">38 Partner Universities</div>
+          <div class="country-tags"><span class="tag">Work Permit</span><span class="tag">PR Pathway</span></div>
+        </div>
+        <div class="country-card" onclick="showPage('destinations')">
+          <span class="country-flag">🇬🇧</span>
+          <div class="country-name">United Kingdom</div>
+          <div class="country-unis">35 Partner Universities</div>
+          <div class="country-tags"><span class="tag">1-Year Masters</span><span class="tag">Chevening</span></div>
+        </div>
+        <div class="country-card" onclick="showPage('destinations')">
+          <span class="country-flag">🇩🇪</span>
+          <div class="country-name">Germany</div>
+          <div class="country-unis">28 Partner Universities</div>
+          <div class="country-tags"><span class="tag">Free Tuition</span><span class="tag">DAAD</span></div>
+        </div>
+        <div class="country-card" onclick="showPage('destinations')">
+          <span class="country-flag">🇮🇹</span>
+          <div class="country-name">Italy</div>
+          <div class="country-unis">22 Partner Universities</div>
+          <div class="country-tags"><span class="tag">DSU Scholarship</span><span class="tag">Low Cost</span></div>
+        </div>
+        <div class="country-card" onclick="showPage('destinations')">
+          <span class="country-flag">🇺🇸</span>
+          <div class="country-name">USA</div>
+          <div class="country-unis">50+ Partners</div>
+          <div class="country-tags"><span class="tag">Fulbright</span><span class="tag">OPT</span></div>
+        </div>
+        <div class="country-card" onclick="showPage('destinations')">
+          <span class="country-flag">🇯🇵</span>
+          <div class="country-name">Japan</div>
+          <div class="country-unis">18 Partner Universities</div>
+          <div class="country-tags"><span class="tag">MEXT</span><span class="tag">JASSO</span></div>
+        </div>
+        <div class="country-card" onclick="showPage('destinations')">
+          <span class="country-flag">🇮🇳</span>
+          <div class="country-name">India</div>
+          <div class="country-unis">30 Partner Universities</div>
+          <div class="country-tags"><span class="tag">Affordable</span><span class="tag">NRI Quota</span></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;">
+        <button class="btn-primary" onclick="showPage('destinations')">View All Destinations <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Our Process</div>
+        <h2 class="section-title">Your Journey, Step by Step</h2>
+        <p class="section-desc">A proven 6-step process that has helped 5000+ students achieve their international education dreams.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">1</div><h3 class="step-title">Free Counselling</h3><p class="step-desc">Meet our expert for a free 60-minute session to assess your profile and career goals.</p></div>
+        <div class="process-step"><div class="step-num">2</div><h3 class="step-title">Country & University Selection</h3><p class="step-desc">We shortlist the best-fit universities and countries based on your budget, academic background, and goals.</p></div>
+        <div class="process-step"><div class="step-num">3</div><h3 class="step-title">Document Preparation</h3><p class="step-desc">SOP, LOR, CV, transcripts — we guide and help prepare every document to perfection.</p></div>
+        <div class="process-step"><div class="step-num">4</div><h3 class="step-title">Application Filing</h3><p class="step-desc">We submit your applications to chosen universities and track each application until offer received.</p></div>
+        <div class="process-step"><div class="step-num">5</div><h3 class="step-title">Visa Processing</h3><p class="step-desc">Complete visa file preparation, mock interview, and bank balance guidance for a stress-free approval.</p></div>
+        <div class="process-step"><div class="step-num">6</div><h3 class="step-title">Pre-Departure & Arrival</h3><p class="step-desc">Accommodation, health insurance, forex, flight booking guidance and post-landing orientation support.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background:var(--warm-white);">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Student Stories</div>
+        <h2 class="section-title">What Our Students Say</h2>
+        <p class="section-desc">Real stories from students who trusted SRM Global to build their international futures.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></div>
+          <p class="testimonial-text">"Sushant sir guided me through every step — from selecting Monash University to getting my Australian student visa approved in just 3 weeks. I received a $18,000 scholarship. Best decision of my life!"</p>
+          <div class="testimonial-author"><div class="author-avatar">P</div><div><div class="author-name">Priya Sharma</div><div class="author-dest">🇦🇺 Monash University, Australia</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></div>
+          <p class="testimonial-text">"I was confused between Canada and Germany. SRM Global helped me understand the pros and cons and I chose TU Munich on a full DAAD scholarship. My SOP was amazing, thanks to their team."</p>
+          <div class="testimonial-author"><div class="author-avatar">R</div><div><div class="author-name">Rajesh Karki</div><div class="author-dest">🇩🇪 TU Munich, Germany</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></div>
+          <p class="testimonial-text">"My IELTS score went from 5.5 to 7.5 after their coaching. Then I got into University of Toronto with a partial scholarship. The entire team is exceptional and so professional."</p>
+          <div class="testimonial-author"><div class="author-avatar">S</div><div><div class="author-name">Sunita Thapa</div><div class="author-dest">🇨🇦 University of Toronto, Canada</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></div>
+          <p class="testimonial-text">"Got into University College London on my first application. Sushant sir's knowledge about UK Tier-4 visa is unmatched. The mock interviews made me completely confident."</p>
+          <div class="testimonial-author"><div class="author-avatar">A</div><div><div class="author-name">Aarav Joshi</div><div class="author-dest">🇬🇧 UCL, London, UK</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></div>
+          <p class="testimonial-text">"I applied to Politecnico di Milano in Italy and got in with a DSU scholarship. The process was very smooth. I never imagined studying in Europe for almost free. Thank you SRM Global!"</p>
+          <div class="testimonial-author"><div class="author-avatar">M</div><div><div class="author-name">Maya Gurung</div><div class="author-dest">🇮🇹 Politecnico di Milano, Italy</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars"><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i></div>
+          <p class="testimonial-text">"PTE coaching at SRM was outstanding. I scored 79 in my second attempt and got accepted at University of British Columbia. My counsellor was available 24/7 for all my queries."</p>
+          <div class="testimonial-author"><div class="author-avatar">B</div><div><div class="author-name">Bijay Poudel</div><div class="author-dest">🇨🇦 UBC, Vancouver, Canada</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-banner-inner">
+      <h2>Ready to Begin Your Study Abroad Journey?</h2>
+      <p>Join thousands of students who turned their international education dreams into reality with SRM Global Consultancy. Your first consultation is completely free.</p>
+      <div class="cta-banner-btns">
+        <button class="btn-light" onclick="showPage('contact')"><i class="fas fa-calendar-check"></i> Book Free Session</button>
+        <button class="btn-ghost" onclick="showPage('scholarships')"><i class="fas fa-award"></i> Explore Scholarships</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DESTINATIONS PAGE ==================== -->
+<div class="page" id="page-destinations">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="showPage('home')">Home</span><i class="fas fa-chevron-right"></i><span>Destinations</span></div>
+      <div class="section-label">Study Abroad</div>
+      <h1 class="section-title">Choose Your Destination</h1>
+      <p class="section-desc">We provide expert guidance for 40+ countries with tailored support for visa, admissions, and scholarships specific to each destination.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="tabs" id="destTabs">
+        <button class="tab-btn active" onclick="filterDest('all',this)">All Countries</button>
+        <button class="tab-btn" onclick="filterDest('popular',this)">Most Popular</button>
+        <button class="tab-btn" onclick="filterDest('europe',this)">Europe</button>
+        <button class="tab-btn" onclick="filterDest('asia',this)">Asia</button>
+        <button class="tab-btn" onclick="filterDest('scholarship',this)">Free/Low-Cost</button>
+      </div>
+      <div class="countries-grid" id="destGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+  <!-- Destination Detail Cards -->
+  <section class="section" style="background:var(--warm-white);padding-top:0;">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Why Study Abroad</div>
+        <h2 class="section-title">Benefits of International Education</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-globe"></i></div><h3 class="feature-title">Global Exposure</h3><p class="feature-desc">Develop a global perspective, build an international network, and gain cultural intelligence that employers worldwide value.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-briefcase"></i></div><h3 class="feature-title">Career Opportunities</h3><p class="feature-desc">International degrees open doors to high-paying careers globally. Many countries offer post-study work visas for 2–5 years.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-dollar-sign"></i></div><h3 class="feature-title">Financial Benefits</h3><p class="feature-desc">Scholarships, part-time work opportunities, and PR pathways make studying abroad a smart long-term investment.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-users"></i></div><h3 class="feature-title">Personal Growth</h3><p class="feature-desc">Independence, adaptability, confidence and cross-cultural communication skills that transform you as a person.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== UNIVERSITIES PAGE ==================== -->
+<div class="page" id="page-universities">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="showPage('home')">Home</span><i class="fas fa-chevron-right"></i><span>Universities</span></div>
+      <div class="section-label">Partner Institutions</div>
+      <h1 class="section-title">200+ Partner Universities</h1>
+      <p class="section-desc">We have official partnerships with top-ranked universities across the globe, ensuring your application gets the attention it deserves.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="filterUnis('all',this)">All</button>
+        <button class="tab-btn" onclick="filterUnis('australia',this)">🇦🇺 Australia</button>
+        <button class="tab-btn" onclick="filterUnis('canada',this)">🇨🇦 Canada</button>
+        <button class="tab-btn" onclick="filterUnis('uk',this)">🇬🇧 UK</button>
+        <button class="tab-btn" onclick="filterUnis('germany',this)">🇩🇪 Germany</button>
+        <button class="tab-btn" onclick="filterUnis('usa',this)">🇺🇸 USA</button>
+        <button class="tab-btn" onclick="filterUnis('italy',this)">🇮🇹 Italy</button>
+        <button class="tab-btn" onclick="filterUnis('europe',this)">🌍 Other EU</button>
+      </div>
+      <div class="unis-grid" id="unisGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== SCHOLARSHIPS PAGE ==================== -->
+<div class="page" id="page-scholarships">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="showPage('home')">Home</span><i class="fas fa-chevron-right"></i><span>Scholarships</span></div>
+      <div class="section-label">Financial Aid</div>
+      <h1 class="section-title">Scholarships & Funding</h1>
+      <p class="section-desc">Discover hundreds of fully funded, partially funded, and paid study opportunities across the globe. We help you identify and apply for the right ones.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="filterSchol('all',this)">All</button>
+        <button class="tab-btn" onclick="filterSchol('full',this)">Fully Funded</button>
+        <button class="tab-btn" onclick="filterSchol('partial',this)">Partial</button>
+        <button class="tab-btn" onclick="filterSchol('government',this)">Government</button>
+        <button class="tab-btn" onclick="filterSchol('university',this)">University</button>
+      </div>
+      <div class="programs-grid" id="scholGrid"></div>
+    </div>
+  </section>
+  <div class="cta-banner">
+    <div class="cta-banner-inner">
+      <h2>Not Sure Which Scholarship to Apply?</h2>
+      <p>Our experts analyse your profile and match you with the most suitable scholarships — boosting your chances significantly.</p>
+      <div class="cta-banner-btns">
+        <button class="btn-light" onclick="showPage('contact')"><i class="fas fa-search"></i> Get Scholarship Match</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TEST PREP PAGE ==================== -->
+<div class="page" id="page-testprep">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="showPage('home')">Home</span><i class="fas fa-chevron-right"></i><span>Test Preparation</span></div>
+      <div class="section-label">Language & Entrance Tests</div>
+      <h1 class="section-title">IELTS · PTE · SAT · GRE · GMAT</h1>
+      <p class="section-desc">Achieve your target score with our expert-led coaching programs. Small batches, personalised feedback, and proven methods for guaranteed results.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Our Courses</div>
+        <h2 class="section-title">Test Preparation Programs</h2>
+      </div>
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="test-header ielts">
+            <div class="test-name">IELTS</div>
+            <div class="test-full">International English Language Testing System</div>
+          </div>
+          <div class="test-body">
+            <div class="test-features">
+              <div class="test-feature"><i class="fas fa-check-circle"></i> 8-week intensive batch program</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Academic & General Training modules</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Weekly full-length mock tests</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Certified IELTS trainer</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Band 7+ guarantee program</div>
+            </div>
+            <div class="test-modules">
+              <span class="test-module">Listening</span><span class="test-module">Reading</span><span class="test-module">Writing</span><span class="test-module">Speaking</span>
+            </div>
+            <div class="test-price">
+              <span class="price-from">Starting from</span>
+              <span class="price-amount">NPR 8,000</span>
+              <span class="price-period">/ course</span>
+            </div>
+            <button class="btn-primary" style="width:100%;justify-content:center;" onclick="showPage('contact')">Enroll Now</button>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-header pte">
+            <div class="test-name">PTE</div>
+            <div class="test-full">Pearson Test of English — Academic</div>
+          </div>
+          <div class="test-body">
+            <div class="test-features">
+              <div class="test-feature"><i class="fas fa-check-circle"></i> AI-based scoring system explained</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Computer-based test simulation</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Targeted strategies for each task type</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Score 65+ guaranteed program</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Flexible weekend batches available</div>
+            </div>
+            <div class="test-modules">
+              <span class="test-module">Speaking & Writing</span><span class="test-module">Reading</span><span class="test-module">Listening</span>
+            </div>
+            <div class="test-price">
+              <span class="price-from">Starting from</span>
+              <span class="price-amount">NPR 7,500</span>
+              <span class="price-period">/ course</span>
+            </div>
+            <button class="btn-primary" style="width:100%;justify-content:center;" onclick="showPage('contact')">Enroll Now</button>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-header sat">
+            <div class="test-name">SAT</div>
+            <div class="test-full">Scholastic Assessment Test</div>
+          </div>
+          <div class="test-body">
+            <div class="test-features">
+              <div class="test-feature"><i class="fas fa-check-circle"></i> New Digital SAT format coverage</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Math & Evidence-Based Reading</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> 1400+ target score program</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Full-length timed practice tests</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> College application counselling included</div>
+            </div>
+            <div class="test-modules">
+              <span class="test-module">Math</span><span class="test-module">Reading & Writing</span>
+            </div>
+            <div class="test-price">
+              <span class="price-from">Starting from</span>
+              <span class="price-amount">NPR 12,000</span>
+              <span class="price-period">/ course</span>
+            </div>
+            <button class="btn-primary" style="width:100%;justify-content:center;" onclick="showPage('contact')">Enroll Now</button>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-header gre">
+            <div class="test-name">GRE</div>
+            <div class="test-full">Graduate Record Examinations</div>
+          </div>
+          <div class="test-body">
+            <div class="test-features">
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Verbal Reasoning in depth</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Quantitative strategies & shortcuts</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> AWA essays with expert review</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> 320+ target score coaching</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> 10 full-length mock tests included</div>
+            </div>
+            <div class="test-modules">
+              <span class="test-module">Verbal</span><span class="test-module">Quantitative</span><span class="test-module">Analytical Writing</span>
+            </div>
+            <div class="test-price">
+              <span class="price-from">Starting from</span>
+              <span class="price-amount">NPR 14,000</span>
+              <span class="price-period">/ course</span>
+            </div>
+            <button class="btn-primary" style="width:100%;justify-content:center;" onclick="showPage('contact')">Enroll Now</button>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-header gmat">
+            <div class="test-name">GMAT</div>
+            <div class="test-full">Graduate Management Admission Test</div>
+          </div>
+          <div class="test-body">
+            <div class="test-features">
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Focus edition format covered</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Data Insights new section prep</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> Business school selection guidance</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> 650+ target score program</div>
+              <div class="test-feature"><i class="fas fa-check-circle"></i> MBA/MIM application support</div>
+            </div>
+            <div class="test-modules">
+              <span class="test-module">Quantitative</span><span class="test-module">Verbal</span><span class="test-module">Data Insights</span>
+            </div>
+            <div class="test-price">
+              <span class="price-from">Starting from</span>
+              <span class="price-amount">NPR 15,000</span>
+              <span class="price-period">/ course</span>
+            </div>
+            <button class="btn-primary" style="width:100%;justify-content:center;" onclick="showPage('contact')">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Score Guarantee -->
+  <section class="section" style="background:var(--warm-white);padding-top:0;">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Our Promise</div>
+        <h2 class="section-title">The SRM Score Guarantee</h2>
+        <p class="section-desc">If you attend 90% of classes and don't achieve your target score, we offer a FREE repeat course — no questions asked.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div><h3 class="feature-title">Expert Trainers</h3><p class="feature-desc">All our trainers are certified and have scored in the top 10% on the tests they teach — real expertise, not just theory.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-users"></i></div><h3 class="feature-title">Small Batches</h3><p class="feature-desc">Maximum 12 students per batch ensures personalised attention, feedback on writing and speaking tasks every session.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-laptop"></i></div><h3 class="feature-title">Online & Offline</h3><p class="feature-desc">Attend from our Kathmandu centre or join online via our interactive platform. Recordings available for every session.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-redo"></i></div><h3 class="feature-title">Free Repeat</h3><p class="feature-desc">Score guarantee — if your target isn't met with full attendance, we provide one complete free repeat course.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="showPage('home')">Home</span><i class="fas fa-chevron-right"></i><span>About Us</span></div>
+      <div class="section-label">Our Story</div>
+      <h1 class="section-title">About SRM Global Consultancy</h1>
+      <p class="section-desc">A decade of excellence in international education consulting, built on trust, expertise and a genuine passion for changing students' lives.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <div class="section-label">Meet the Founder</div>
+          <h2 class="section-title">Sushant Raj Mishra</h2>
+          <p style="font-size:1rem;color:var(--ink-muted);line-height:1.75;margin-bottom:2rem;">With over a decade of experience in international education consulting, Sushant Raj Mishra has helped more than 5,000 students realise their dreams of studying abroad. His deep knowledge of global university admissions, immigration law, and scholarship systems makes him one of Nepal's most trusted education consultants.</p>
+          <p style="font-size:1rem;color:var(--ink-muted);line-height:1.75;margin-bottom:2rem;">Having personally guided students to world-renowned institutions in Australia, Canada, UK, Germany, Italy, USA, and across Europe, Sushant brings both passion and precision to every counselling session. His approach is personalised, data-driven, and always in the best interest of the student.</p>
+          <ul class="about-list">
+            <li><i class="fas fa-certificate"></i> Certified Education Agent — PIER (Canada), AIRC (USA)</li>
+            <li><i class="fas fa-globe"></i> Official Partner — 200+ universities in 40+ countries</li>
+            <li><i class="fas fa-award"></i> Best Education Consultant Award — Nepal 2023</li>
+            <li><i class="fas fa-users"></i> 5,000+ students placed internationally</li>
+            <li><i class="fas fa-passport"></i> 98.3% visa approval rate — all countries</li>
+            <li><i class="fas fa-book"></i> Featured speaker at international education fairs</li>
+          </ul>
+        </div>
+        <div class="about-visual">
+          <div class="owner-badge">
+            <div class="owner-avatar">S</div>
+            <div>
+              <div class="owner-name">Sushant Raj Mishra</div>
+              <div class="owner-title">Founder & Chief Education Consultant</div>
+            </div>
+          </div>
+          <div class="about-values">
+            <div class="value-item"><div class="value-icon"><i class="fas fa-heart"></i></div><div><div class="value-title">Student-First Philosophy</div><div class="value-desc">Every decision is guided by what's truly best for the student — not commission or preference.</div></div></div>
+            <div class="value-item"><div class="value-icon"><i class="fas fa-lock"></i></div><div><div class="value-title">100% Transparency</div><div class="value-desc">No hidden fees, no misleading advice. Full transparency at every stage of the process.</div></div></div>
+            <div class="value-item"><div class="value-icon"><i class="fas fa-handshake"></i></div><div><div class="value-title">Long-Term Relationships</div><div class="value-desc">Our relationship doesn't end at admission — we support students throughout their journey abroad.</div></div></div>
+            <div class="value-item"><div class="value-icon"><i class="fas fa-chart-line"></i></div><div><div class="value-title">Proven Track Record</div><div class="value-desc">10+ years of consistently high placement rates across all major study destinations.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:var(--warm-white);padding-top:0;">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Our Numbers</div>
+        <h2 class="section-title">A Decade of Impact</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:2rem;">
+        <div style="text-align:center;padding:2rem;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gold);">5000+</div>
+          <div style="font-size:0.88rem;color:var(--ink-muted);margin-top:6px;">Students Placed</div>
+        </div>
+        <div style="text-align:center;padding:2rem;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gold);">40+</div>
+          <div style="font-size:0.88rem;color:var(--ink-muted);margin-top:6px;">Countries</div>
+        </div>
+        <div style="text-align:center;padding:2rem;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gold);">200+</div>
+          <div style="font-size:0.88rem;color:var(--ink-muted);margin-top:6px;">Partner Universities</div>
+        </div>
+        <div style="text-align:center;padding:2rem;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gold);">98%</div>
+          <div style="font-size:0.88rem;color:var(--ink-muted);margin-top:6px;">Visa Success Rate</div>
+        </div>
+        <div style="text-align:center;padding:2rem;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gold);">$2M+</div>
+          <div style="font-size:0.88rem;color:var(--ink-muted);margin-top:6px;">Scholarships Secured</div>
+        </div>
+        <div style="text-align:center;padding:2rem;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gold);">10+</div>
+          <div style="font-size:0.88rem;color:var(--ink-muted);margin-top:6px;">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="showPage('home')">Home</span><i class="fas fa-chevron-right"></i><span>Contact</span></div>
+      <div class="section-label">Get In Touch</div>
+      <h1 class="section-title">Book Your Free Counselling</h1>
+      <p class="section-desc">Speak directly with Sushant Raj Mishra. Your first consultation is completely free and commitment-free. We're here to help.</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><div class="contact-label">Office Address</div><div class="contact-value">Kathmandu, Nepal<br><span style="font-size:0.85rem;color:var(--ink-muted);">Near Thamel, New Baneshwor</span></div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div><div class="contact-label">Phone / WhatsApp</div><div class="contact-value">+977 98XXXXXXXX</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div><div class="contact-label">Email</div><div class="contact-value">info@srmglobalconsultancy.com</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div><div class="contact-label">Office Hours</div><div class="contact-value">Sun–Fri: 9:00 AM – 6:00 PM<br><span style="font-size:0.85rem;color:var(--ink-muted);">Saturday: 10:00 AM – 3:00 PM</span></div></div>
+          </div>
+          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+            <h4 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:1rem;">Follow Us</h4>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a href="#" style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--ink-soft);font-size:0.85rem;transition:all 0.2s;" onmouseover="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--gold-pale')" onmouseout="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--bg')"><i class="fab fa-facebook-f" style="color:#1877F2;"></i> Facebook</a>
+              <a href="#" style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--ink-soft);font-size:0.85rem;transition:all 0.2s;" onmouseover="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--gold-pale')" onmouseout="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--bg')"><i class="fab fa-instagram" style="color:#E1306C;"></i> Instagram</a>
+              <a href="#" style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--ink-soft);font-size:0.85rem;transition:all 0.2s;" onmouseover="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--gold-pale')" onmouseout="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--bg')"><i class="fab fa-youtube" style="color:#FF0000;"></i> YouTube</a>
+              <a href="#" style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--ink-soft);font-size:0.85rem;transition:all 0.2s;" onmouseover="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--gold-pale')" onmouseout="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--bg')"><i class="fab fa-tiktok" style="color:var(--ink);"></i> TikTok</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;">Send Us a Message</h3>
+          <p style="font-size:0.88rem;color:var(--ink-muted);margin-bottom:2rem;">Fill in the form and our team will get back to you within 24 hours.</p>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="Ramesh"/></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
+            <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+977 98XXXXXXXX"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Preferred Destination</label>
+              <select>
+                <option value="">-- Select Country --</option>
+                <option>Australia</option><option>Canada</option><option>United Kingdom</option>
+                <option>Germany</option><option>Italy</option><option>USA</option>
+                <option>Japan</option><option>Netherlands</option><option>France</option>
+                <option>Ireland</option><option>New Zealand</option><option>India</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Service Interested In</label>
+              <select>
+                <option value="">-- Select Service --</option>
+                <option>Study Abroad Consultation</option>
+                <option>Scholarship Guidance</option>
+                <option>Visa Assistance</option>
+                <option>IELTS Coaching</option>
+                <option>PTE Coaching</option>
+                <option>SAT Coaching</option>
+                <option>GRE / GMAT Coaching</option>
+                <option>SOP / Application Help</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label>Academic Background</label>
+            <select>
+              <option value="">-- Select --</option>
+              <option>+2 / A-Levels (going for Bachelor's)</option>
+              <option>Bachelor's Complete (going for Master's)</option>
+              <option>Master's Complete (going for PhD)</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message / Queries</label><textarea placeholder="Tell us about your goals, academic background, budget, or any specific questions..."></textarea></div>
+          <button class="btn-primary" style="width:100%;justify-content:center;padding:16px;" onclick="alert('Thank you! We will contact you within 24 hours. — Sushant Raj Mishra, SRM Global Consultancy')">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          <p style="text-align:center;font-size:0.78rem;color:var(--ink-muted);margin-top:12px;"><i class="fas fa-lock"></i> Your information is 100% confidential and never shared.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== DEVELOPER CTA ==================== -->
+<section class="dev-cta-wrapper">
+  <div class="dev-cta-box fade-up">
+    <div class="dev-cta-content">
+      <div class="dev-cta-label">System Architecture</div>
+      <h2 class="dev-cta-title">Built with Precision by <br/><em>Sushant Raj Mishra</em></h2>
+      <p class="dev-cta-desc">Experience seamless UI scaling, robust structure, and premium front-end engineering designed to convert engagement into success.</p>
+      <a href="https://sushantrm.com.np/" target="_blank" class="dev-cta-btn">
+        Contact the Developer <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="dev-theme-card">
+      <div class="dt-label">Experience Mode</div>
+      <p style="font-size:0.85rem;color:var(--ink-muted);margin:0;">Switch aesthetic theme globally.</p>
+      <div class="dt-toggle" onclick="toggleTheme()" title="Toggle Site Theme">
+        <div class="dt-knob" id="globalThemeKnob"><i class="fas fa-sun" id="dt-icon"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-badge">S</div>
+        <div class="footer-logo-text">SRM Global Consultancy</div>
+      </div>
+      <p class="footer-desc">Nepal's premier international education consulting firm. Founded by Sushant Raj Mishra, we have guided 5000+ students to their dream universities across 40+ countries since 2014.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
+        <a class="social-btn" href="#"><i class="fab fa-instagram"></i></a>
+        <a class="social-btn" href="#"><i class="fab fa-youtube"></i></a>
+        <a class="social-btn" href="#"><i class="fab fa-tiktok"></i></a>
+        <a class="social-btn" href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>Our Services</h4>
+      <ul class="footer-links">
+        <li><a onclick="showPage('destinations')">Study in Australia</a></li>
+        <li><a onclick="showPage('destinations')">Study in Canada</a></li>
+        <li><a onclick="showPage('destinations')">Study in UK</a></li>
+        <li><a onclick="showPage('destinations')">Study in Germany</a></li>
+        <li><a onclick="showPage('destinations')">Study in Italy</a></li>
+        <li><a onclick="showPage('scholarships')">Scholarship Guidance</a></li>
+        <li><a onclick="showPage('contact')">Visa Assistance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Test Preparation</h4>
+      <ul class="footer-links">
+        <li><a onclick="showPage('testprep')">IELTS Coaching</a></li>
+        <li><a onclick="showPage('testprep')">PTE Coaching</a></li>
+        <li><a onclick="showPage('testprep')">SAT Coaching</a></li>
+        <li><a onclick="showPage('testprep')">GRE Coaching</a></li>
+        <li><a onclick="showPage('testprep')">GMAT Coaching</a></li>
+        <li><a onclick="showPage('contact')">Book Free Trial</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('universities')">Universities</a></li>
+        <li><a onclick="showPage('scholarships')">Scholarships</a></li>
+        <li><a onclick="showPage('about')">About Us</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 SRM Global Consultancy. All rights reserved. Kathmandu, Nepal.</div>
+    <div class="footer-made">✦ Made by Sushant ✦</div>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+// ======= DATA =======
+const destinations = [
+  {flag:'🇦🇺',name:'Australia',unis:43,tags:['PR Pathway','Scholarship','Work Rights'],cat:['popular'],desc:'Australia is one of the most preferred destinations for international students, offering world-class education, post-study work visas up to 6 years, and clear PR pathways.'},
+  {flag:'🇨🇦',name:'Canada',unis:38,tags:['Work Permit','PR Pathway','Co-op'],cat:['popular'],desc:'Canada offers excellent quality of life, PGWP for up to 3 years, and one of the most straightforward immigration routes for international graduates.'},
+  {flag:'🇬🇧',name:'United Kingdom',unis:35,tags:['1-Year Masters','Chevening','Graduate Visa'],cat:['popular'],desc:'The UK is home to some of the world\'s oldest and most prestigious universities including Oxford, Cambridge and Imperial College London.'},
+  {flag:'🇩🇪',name:'Germany',unis:28,tags:['Free Tuition','DAAD','Job Seeker Visa'],cat:['popular','europe','scholarship'],desc:'Germany offers tuition-free education at public universities, the prestigious DAAD scholarship, and excellent career opportunities in Europe.'},
+  {flag:'🇮🇹',name:'Italy',unis:22,tags:['DSU Scholarship','Low Cost','Schengen'],cat:['popular','europe','scholarship'],desc:'Italy has world-renowned universities and offers low tuition fees, DSU scholarships, and the incredible European lifestyle and culture.'},
+  {flag:'🇺🇸',name:'USA',unis:55,tags:['Fulbright','OPT','F1 Visa'],cat:['popular'],desc:'The USA is home to the most Nobel laureates and top-ranked universities in the world with unmatched research opportunities.'},
+  {flag:'🇯🇵',name:'Japan',unis:18,tags:['MEXT','JASSO','Work PR'],cat:['asia'],desc:'Japan offers MEXT fully funded government scholarships, cutting-edge research facilities, and a unique cultural experience.'},
+  {flag:'🇮🇳',name:'India',unis:30,tags:['Affordable','NRI Quota','Medical'],cat:['asia','scholarship'],desc:'India offers affordable world-class education especially in engineering, medicine and management with many private scholarships.'},
+  {flag:'🇳🇱',name:'Netherlands',unis:15,tags:['Holland Scholarship','English Taught','Tulip Award'],cat:['europe','scholarship'],desc:'Netherlands offers hundreds of English-taught programs and the Holland Scholarship for international students.'},
+  {flag:'🇫🇷',name:'France',unis:20,tags:['Eiffel Scholarship','Low Fees','Erasmus'],cat:['europe','scholarship'],desc:'France has prestigious Grandes Écoles and low tuition fees, with the Eiffel Excellence scholarship for master\'s students.'},
+  {flag:'🇮🇪',name:'Ireland',unis:12,tags:['Stay Back Visa','EU Hub','Tech Jobs'],cat:['europe'],desc:'Ireland is Europe\'s tech hub with companies like Google, Meta, and Apple headquartered here, offering great career prospects.'},
+  {flag:'🇳🇿',name:'New Zealand',unis:10,tags:['Post-Study Work','PR Pathway','Nature'],cat:['popular'],desc:'New Zealand offers an exceptional quality of life, post-study work rights, and clear pathways to permanent residency.'},
+  {flag:'🇸🇬',name:'Singapore',unis:8,tags:['NUS','NTU','Asia Hub'],cat:['asia'],desc:'Singapore is Asia\'s premier education hub with NUS and NTU ranked among the top 20 universities globally.'},
+  {flag:'🇰🇷',name:'South Korea',unis:12,tags:['KGSP','GKS','K-Culture'],cat:['asia','scholarship'],desc:'South Korea offers the prestigious GKS/KGSP fully funded scholarship covering tuition, accommodation and monthly stipend.'},
+  {flag:'🇸🇪',name:'Sweden',unis:10,tags:['SISGP','Free Tuition(EU)','SI Scholarship'],cat:['europe','scholarship'],desc:'Sweden is renowned for innovation, sustainability and the Swedish Institute scholarship for international students.'},
+  {flag:'🇦🇹',name:'Austria',unis:9,tags:['Low Tuition','OeAD','EU Travel'],cat:['europe','scholarship'],desc:'Austria offers some of the lowest tuition fees in Europe and OeAD scholarships for international students.'},
+];
+
+const universities = [
+  {name:'University of Melbourne',location:'Melbourne, Australia',flag:'🇦🇺',rank:'#33 QS',abbr:'UoM',country:'australia',features:['Engineering','Business','Medicine']},
+  {name:'Australian National University',location:'Canberra, Australia',flag:'🇦🇺',rank:'#34 QS',abbr:'ANU',country:'australia',features:['Research','Law','Arts']},
+  {name:'Monash University',location:'Melbourne, Australia',flag:'🇦🇺',rank:'#42 QS',abbr:'MU',country:'australia',features:['Pharmacy','Engineering','Business']},
+  {name:'UNSW Sydney',location:'Sydney, Australia',flag:'🇦🇺',rank:'#45 QS',abbr:'UNSW',country:'australia',features:['Engineering','Finance','Computing']},
+  {name:'University of Queensland',location:'Brisbane, Australia',flag:'🇦🇺',rank:'#40 QS',abbr:'UQ',country:'australia',features:['Agriculture','Medicine','Bioscience']},
+  {name:'University of Toronto',location:'Toronto, Canada',flag:'🇨🇦',rank:'#25 QS',abbr:'UoT',country:'canada',features:['Research','AI','Medicine']},
+  {name:'University of British Columbia',location:'Vancouver, Canada',flag:'🇨🇦',rank:'#38 QS',abbr:'UBC',country:'canada',features:['Forestry','Engineering','Nursing']},
+  {name:'McGill University',location:'Montreal, Canada',flag:'🇨🇦',rank:'#31 QS',abbr:'MG',country:'canada',features:['Law','Medicine','Music']},
+  {name:'University of Waterloo',location:'Waterloo, Canada',flag:'🇨🇦',rank:'#112 QS',abbr:'UW',country:'canada',features:['Tech','Co-op','Engineering']},
+  {name:'University College London',location:'London, UK',flag:'🇬🇧',rank:'#9 QS',abbr:'UCL',country:'uk',features:['Architecture','Medicine','Law']},
+  {name:'University of Edinburgh',location:'Edinburgh, UK',flag:'🇬🇧',rank:'#22 QS',abbr:'UoE',country:'uk',features:['Informatics','Medicine','Arts']},
+  {name:'University of Manchester',location:'Manchester, UK',flag:'🇬🇧',rank:'#34 QS',abbr:'UoM',country:'uk',features:['Business','Engineering','Biotech']},
+  {name:'TU Munich',location:'Munich, Germany',flag:'🇩🇪',rank:'#37 QS',abbr:'TUM',country:'germany',features:['Engineering','Sciences','Business']},
+  {name:'Humboldt University Berlin',location:'Berlin, Germany',flag:'🇩🇪',rank:'#120 QS',abbr:'HUB',country:'germany',features:['Arts','Law','Natural Science']},
+  {name:'Heidelberg University',location:'Heidelberg, Germany',flag:'🇩🇪',rank:'#87 QS',abbr:'HU',country:'germany',features:['Medicine','Life Science','Social Science']},
+  {name:'MIT',location:'Massachusetts, USA',flag:'🇺🇸',rank:'#1 QS',abbr:'MIT',country:'usa',features:['Technology','Engineering','AI']},
+  {name:'Harvard University',location:'Cambridge, USA',flag:'🇺🇸',rank:'#4 QS',abbr:'HU',country:'usa',features:['Law','Medicine','Business']},
+  {name:'Stanford University',location:'California, USA',flag:'🇺🇸',rank:'#5 QS',abbr:'SU',country:'usa',features:['Tech','Business','Engineering']},
+  {name:'Politecnico di Milano',location:'Milan, Italy',flag:'🇮🇹',rank:'#123 QS',abbr:'PoliMi',country:'italy',features:['Architecture','Design','Engineering']},
+  {name:'University of Bologna',location:'Bologna, Italy',flag:'🇮🇹',rank:'#154 QS',abbr:'UniBo',country:'italy',features:['Law','Humanities','Medicine']},
+  {name:'Sapienza University of Rome',location:'Rome, Italy',flag:'🇮🇹',rank:'#171 QS',abbr:'SR',country:'italy',features:['Classics','Engineering','Science']},
+  {name:'University of Amsterdam',location:'Amsterdam, Netherlands',flag:'🇳🇱',rank:'#55 QS',abbr:'UvA',country:'europe',features:['Business','Social Science','Law']},
+  {name:'KU Leuven',location:'Leuven, Belgium',flag:'🇧🇪',rank:'#74 QS',abbr:'KUL',country:'europe',features:['Engineering','Law','Theology']},
+  {name:'Uppsala University',location:'Uppsala, Sweden',flag:'🇸🇪',rank:'#99 QS',abbr:'UU',country:'europe',features:['Pharmacy','Medicine','Science']},
+];
+
+const scholarships = [
+  {icon:'fas fa-star',title:'Australia Awards',country:'🇦🇺 Australia',type:'full',cat:'government',details:['Full tuition fee covered','Monthly living stipend','Return airfare included','Health insurance covered','Only for developing countries'],badge:'scholarship'},
+  {icon:'fas fa-leaf',title:'Vanier Canada Graduate Scholarship',country:'🇨🇦 Canada',type:'full',cat:'government',details:['CAD $50,000/year','3-year duration','Research excellence focus','For PhD students','World-class universities'],badge:'scholarship'},
+  {icon:'fas fa-chess-queen',title:'Chevening Scholarship',country:'🇬🇧 United Kingdom',type:'full',cat:'government',details:['Full tuition + living costs','Leadership potential focus','Return flights covered','1-year Masters','150+ countries eligible'],badge:'scholarship'},
+  {icon:'fas fa-book',title:'DAAD Scholarship',country:'🇩🇪 Germany',type:'full',cat:'government',details:['Full tuition waiver','Monthly stipend €850–€1,200','Health insurance','Travel allowance','Research programs'],badge:'scholarship'},
+  {icon:'fas fa-university',title:'Monash International Merit',country:'🇦🇺 Australia',type:'partial',cat:'university',details:['AUD $10,000–$20,000','Merit-based award','No separate application','Automatic consideration','Renewable annually'],badge:'scholarship'},
+  {icon:'fas fa-globe',title:'UBC International Leader Award',country:'🇨🇦 Canada',type:'partial',cat:'university',details:['CAD $10,000 first year','Leadership and academics','Separate application needed','Renewable for 4 years','Full-time study required'],badge:'scholarship'},
+  {icon:'fas fa-medal',title:'UCL Global Excellence',country:'🇬🇧 United Kingdom',type:'partial',cat:'university',details:['£5,000 per year','Academic excellence','Any undergraduate programme','No separate application','Renewable subject to progress'],badge:'scholarship'},
+  {icon:'fas fa-sun',title:'DSU Scholarship Italy',country:'🇮🇹 Italy',type:'full',cat:'government',details:['Full accommodation covered','Monthly food allowance','Tuition waiver at state unis','Income & merit based','ISEE filing required'],badge:'scholarship'},
+  {icon:'fas fa-gem',title:'Holland Scholarship',country:'🇳🇱 Netherlands',type:'partial',cat:'government',details:['€5,000 first year','Non-EEA students only','Bachelor\'s or Master\'s','Highly competitive','University partnership required'],badge:'scholarship'},
+  {icon:'fas fa-dove',title:'Eiffel Excellence (France)',country:'🇫🇷 France',type:'full',cat:'government',details:['Full tuition covered','Monthly stipend €1,181','Return airfare covered','Masters & PhD','French institutions only'],badge:'scholarship'},
+  {icon:'fas fa-yen-sign',title:'MEXT Scholarship (Japan)',country:'🇯🇵 Japan',type:'full',cat:'government',details:['Full tuition waiver','Monthly stipend ¥117,000','Return airfare','Japanese language course','Prestigious government award'],badge:'scholarship'},
+  {icon:'fas fa-graduation-cap',title:'University of Toronto Lester B. Pearson',country:'🇨🇦 Canada',type:'full',cat:'university',details:['Full tuition for 4 years','Books and incidentals','Full residence support','For undergrads only','Exceptional profile required'],badge:'scholarship'},
+  {icon:'fas fa-award',title:'Self-Funded (Paid) Programs',country:'🌍 Multiple',type:'paid',cat:'university',details:['No scholarship required','Standard tuition fees apply','Part-time work rights','Payment plans available','Financial aid may be available'],badge:'paid'},
+  {icon:'fas fa-coins',title:'GKS / KGSP (Korea)',country:'🇰🇷 South Korea',type:'full',cat:'government',details:['Full tuition covered','Monthly stipend KRW 900,000','Korean language training','Health insurance','Return airfare included'],badge:'scholarship'},
+  {icon:'fas fa-flag',title:'Swedish Institute Scholarship',country:'🇸🇪 Sweden',type:'full',cat:'government',details:['Full tuition covered','SEK 11,000/month stipend','Return flight covered','Health insurance','Housing benefit'],badge:'scholarship'},
+];
+
+// ======= RENDER FUNCTIONS =======
+function renderDestinations(filter='all') {
+  const grid = document.getElementById('destGrid');
+  if(!grid) return;
+  const filtered = filter==='all' ? destinations : destinations.filter(d=>d.cat.includes(filter));
+  grid.innerHTML = filtered.map(d=>`
+    <div class="country-card">
+      <span class="country-flag">${d.flag}</span>
+      <div class="country-name">${d.name}</div>
+      <div class="country-unis">${d.unis} Partner Universities</div>
+      <p style="font-size:0.8rem;color:var(--ink-muted);line-height:1.5;margin:10px 0;">${d.desc}</p>
+      <div class="country-tags">${d.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>
+  `).join('');
+}
+
+function filterDest(cat, btn) {
+  document.querySelectorAll('#destTabs .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDestinations(cat);
+}
+
+function renderUniversities(filter='all') {
+  const grid = document.getElementById('unisGrid');
+  if(!grid) return;
+  const filtered = filter==='all' ? universities : universities.filter(u=>u.country===filter);
+  grid.innerHTML = filtered.map(u=>`
+    <div class="uni-card">
+      <div class="uni-top">
+        <div class="uni-logo-placeholder">${u.abbr.charAt(0)}</div>
+        <div class="uni-flag">${u.flag}</div>
+      </div>
+      <div class="uni-name">${u.name}</div>
+      <div class="uni-location"><i class="fas fa-map-marker-alt" style="color:var(--gold);font-size:0.75rem;"></i>${u.location}</div>
+      <div class="uni-rank-badge"><i class="fas fa-trophy" style="font-size:0.75rem;"></i>${u.rank}</div>
+      <div class="uni-features">${u.features.map(f=>`<span class="uni-feature">${f}</span>`).join('')}</div>
+    </div>
+  `).join('');
+}
+
+function filterUnis(country, btn) {
+  document.querySelectorAll('#page-universities .tabs .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderUniversities(country);
+}
+
+function renderScholarships(filter='all') {
+  const grid = document.getElementById('scholGrid');
+  if(!grid) return;
+  const filtered = filter==='all' ? scholarships : scholarships.filter(s=>{
+    if(filter==='full') return s.type==='full';
+    if(filter==='partial') return s.type==='partial';
+    return s.cat===filter;
+  });
+  grid.innerHTML = filtered.map(s=>`
+    <div class="program-card">
+      <div class="program-header">
+        <div class="program-icon"><i class="${s.icon}"></i></div>
+        <div>
+          <div class="program-title">${s.title}</div>
+          <div class="program-country">${s.country}</div>
+        </div>
+      </div>
+      <div class="program-body">
+        ${s.details.map(d=>`<div class="program-detail"><i class="fas fa-check-circle"></i><span>${d}</span></div>`).join('')}
+      </div>
+      <div class="program-footer" style="display:flex;align-items:center;justify-content:space-between;">
+        ${s.badge==='scholarship' ? '<span class="scholarship-badge"><i class="fas fa-award"></i> Scholarship</span>' : '<span class="paid-badge"><i class="fas fa-dollar-sign"></i> Paid Program</span>'}
+        <button class="btn-primary" style="padding:7px 16px;font-size:0.82rem;" onclick="showPage('contact')">Apply Now</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterSchol(filter, btn) {
+  document.querySelectorAll('#page-scholarships .tabs .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderScholarships(filter);
+}
+
+// ======= NAVIGATION =======
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l=>{
+    if(l.getAttribute('onclick') && l.getAttribute('onclick').includes("'"+id+"'")) l.classList.add('active');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  // Init grids on first view
+  if(id==='destinations') renderDestinations();
+  if(id==='universities') renderUniversities();
+  if(id==='scholarships') renderScholarships();
+}
+
+// ======= THEME =======
+function toggleTheme() {
+  const html = document.documentElement;
+  const icon = document.getElementById('theme-icon');
+  const dtIcon = document.getElementById('dt-icon');
+  
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  const newTheme = isDark ? 'light' : 'dark';
+  
+  if(newTheme === 'dark') {
+    html.setAttribute('data-theme','dark');
+    if(icon) icon.className='fas fa-moon';
+    if(dtIcon) dtIcon.className='fas fa-moon';
+  } else {
+    html.removeAttribute('data-theme');
+    if(icon) icon.className='fas fa-sun';
+    if(dtIcon) dtIcon.className='fas fa-sun';
+  }
+  
+  localStorage.setItem('srm_theme', newTheme);
+}
+
+// Init theme
+(function() {
+  const saved = localStorage.getItem('srm_theme');
+  if(saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    window.addEventListener('DOMContentLoaded', () => {
+      const icon = document.getElementById('theme-icon');
+      const dtIcon = document.getElementById('dt-icon');
+      if(icon) icon.className='fas fa-moon';
+      if(dtIcon) dtIcon.className='fas fa-moon';
+    });
+  }
+})();
+
+// ======= MOBILE NAV =======
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+// ======= SCROLL TOP =======
+window.addEventListener('scroll',()=>{
+  const btn = document.getElementById('scrollTop');
+  if(window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// Close mobile nav on outside click
+document.addEventListener('click',e=>{
+  const nav = document.getElementById('mobileNav');
+  if(nav.classList.contains('open') && !e.target.closest('.mobile-nav') && !e.target.closest('.hamburger')) {
+    nav.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
